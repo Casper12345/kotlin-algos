@@ -1,6 +1,7 @@
 package merge_sort
 
 import bubble_sort.BubbleSort
+import quick_sort.QuickSort
 import java.time.Instant
 import java.time.LocalTime
 import kotlin.random.Random
@@ -71,18 +72,25 @@ class MergeSort {
 
 fun main() {
     val m = MergeSort()
-    val b = BubbleSort // 6000000 vs 1000000000000
-    val seq = generateSequence { Random.nextInt(1000000)}.take(1000000).toList().toIntArray().toTypedArray()
+    val q = QuickSort() // 6000000 vs 1000000000000
+    val seq = generateSequence { Random.nextInt(10000000)}.take(10000000).toList().toIntArray().toTypedArray()
 
 
-    val t1 = Instant.now().nano
-    val rs =m.sort(seq)
-    val t2 = Instant.now().nano
+    val t1 = Instant.now().toEpochMilli()
+    val rs = m.sort(seq)
+    val t2 = Instant.now().toEpochMilli()
     println(t2 - t1)
-    rs.forEach { i -> println(i) }
+//    rs.forEach { i -> println(i) }
 
-//    val t3 = Instant.now().nano
-//    b.sort(seq)
-//    val t4 = Instant.now().nano
-//    println(t4 - t3)
+    val t3 = Instant.now().toEpochMilli()
+    val rs2 = q.sort(seq)
+    val t4 = Instant.now().toEpochMilli()
+    println(t4 - t3)
+
+    val t5 = Instant.now().toEpochMilli()
+    val rs3 = seq.sort()
+    val t6 = Instant.now().toEpochMilli()
+    println(t6 - t5)
+
+//    rs2.forEach { i -> println(i) }
 }
