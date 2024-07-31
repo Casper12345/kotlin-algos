@@ -9,7 +9,9 @@ class QuickSort {
         for(i in lo until hi) {
             if(a[i] < pivot) {
                 j++
-                swap(a, j, i)
+                if(i != j){
+                    swap(a, j, i)
+                }
             }
         }
         swap(a, j + 1, hi)
@@ -37,7 +39,7 @@ class QuickSort {
 
 fun main() {
     val q = QuickSort()
-    val a = arrayOf(2,1,3,8,9,0,2,3) // [0]
+    val a = arrayOf(2,1,3,8,9,0,2,3,9,6,7,10,1) // [0]
     q.sort(a, 0, a.size -1)
     a.forEach { i -> println(i) }
 }
