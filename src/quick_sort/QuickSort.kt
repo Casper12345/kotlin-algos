@@ -14,8 +14,9 @@ class QuickSort {
                 }
             }
         }
-        swap(a, j + 1, hi)
-        return j + 1
+        j++
+        swap(a, j, hi)
+        return j
     }
 
     fun sort(arr: Array<Int>, lo: Int = 0, hi: Int = arr.size -1): Array<Int> {

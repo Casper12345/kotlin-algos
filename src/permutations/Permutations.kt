@@ -4,7 +4,7 @@ class Permutations {
 
     val sb = ArrayList<String>()
 
-    fun permutate(st: String, p: Int = 0) { // time: O(n * n) space: O(1)
+    fun permutate(st: String, p: Int = 0) { // time: O(n!) space: O(1)
         if(p == st.length) {
             sb.add(st)
         }
