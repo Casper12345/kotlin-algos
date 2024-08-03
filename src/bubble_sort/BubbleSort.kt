@@ -2,25 +2,36 @@ package bubble_sort
 
 object BubbleSort {
 
-    fun sort(a: Array<Int>): Array<Int> {
-        for (i in 0 until a.size) {
-            for (j in i + 1 until a.size) { // time: O(n * n) space: O(1)
-                if(a[i] > a[j]) {
-                    swap(a, i, j)
+    fun sort(a: Array<Int>) {
+            var n = 0
+            var swapped = false
+            while(n < a.size) {
+                for(i in 1 until a.size) {
+                    if (a[i - 1] > a[i]) {
+                        swap(a, i - 1, i)
+                        swapped = true
+                    }
                 }
+                if (!swapped) {
+                    break
+                }
+
+                n++
             }
-        }
-        return a
+
     }
 
-    private fun swap(arr: Array<Int>, a: Int, b: Int) {
+    fun swap(arr: Array<Int>, a: Int, b: Int) {
         val temp = arr[a]
         arr[a] = arr[b]
         arr[b] = temp
+
     }
+
 }
 
 fun main() {
-    BubbleSort.sort(arrayOf(5, 3, 4, 1, 0, 12, 0, 33, 1)).forEach { i -> println(i) }
-
+    val a = arrayOf(2,1,3,8,9,0,2,3,9,6,7,10,1)
+    BubbleSort.sort(a)
+    a.forEach { i -> println(i) }
 }

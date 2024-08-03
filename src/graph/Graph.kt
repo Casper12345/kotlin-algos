@@ -5,6 +5,7 @@ import kotlin.collections.ArrayList
 import kotlin.math.*
 
 class Graph(val size: Int) {
+    // adjacency list
     private val edges = Array<LinkedList<Int>>(size){ LinkedList() }
 
     fun addEdge(v: Int, w: Int) {

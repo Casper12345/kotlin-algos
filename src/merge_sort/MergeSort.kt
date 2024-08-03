@@ -1,9 +1,7 @@
 package merge_sort
 
-import bubble_sort.BubbleSort
-import quick_sort.QuickSort
+import quick_sort.OptimizedQuickSort
 import java.time.Instant
-import java.time.LocalTime
 import kotlin.random.Random
 
 class MergeSort {
@@ -72,8 +70,8 @@ class MergeSort {
 
 fun main() {
     val m = MergeSort()
-    val q = QuickSort() // 6000000 vs 1000000000000
-    val seq = generateSequence { Random.nextInt(10000000)}.take(10000000).toList().toIntArray().toTypedArray()
+    val q = OptimizedQuickSort()
+    val seq = generateSequence { Random.nextInt(100)}.take(10000000).toList().toIntArray().toTypedArray()
 
 
     val t1 = Instant.now().toEpochMilli()
