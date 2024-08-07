@@ -1,5 +1,6 @@
 package merge_sort
 
+import binary_heap.HeapSort
 import quick_sort.OptimizedQuickSort
 import java.time.Instant
 import kotlin.random.Random
@@ -71,7 +72,10 @@ class MergeSort {
 fun main() {
     val m = MergeSort()
     val q = OptimizedQuickSort()
-    val seq = generateSequence { Random.nextInt(100)}.take(10000000).toList().toIntArray().toTypedArray()
+    val seq = generateSequence { Random.nextInt(1000000)}.take(10000000).toList().toIntArray().toTypedArray()
+    val seq2 = seq.clone()
+    val seq3 = seq.clone()
+    val seq4 = seq.clone()
 
 
     val t1 = Instant.now().toEpochMilli()
@@ -81,14 +85,30 @@ fun main() {
 //    rs.forEach { i -> println(i) }
 
     val t3 = Instant.now().toEpochMilli()
-    val rs2 = q.sort(seq)
+    val rs2 = q.sort(seq2)
     val t4 = Instant.now().toEpochMilli()
     println(t4 - t3)
 
     val t5 = Instant.now().toEpochMilli()
-    val rs3 = seq.sort()
+    val rs3 = seq3.sort()
     val t6 = Instant.now().toEpochMilli()
     println(t6 - t5)
 
-//    rs2.forEach { i -> println(i) }
+    val t7 = Instant.now().toEpochMilli()
+    val rs4 = seq3.sort()
+    val t8 = Instant.now().toEpochMilli()
+    println(t8 - t7)
+
+    val t9 = Instant.now().toEpochMilli()
+    val rs5 = q.sort(seq3)
+    val t10 = Instant.now().toEpochMilli()
+    println(t10 - t9)
+
+    val t11 = Instant.now().toEpochMilli()
+    val rs6 = HeapSort.sort(seq4)
+    val t12 = Instant.now().toEpochMilli()
+    println(t12 - t11)
+
+    println(seq2.contentEquals(seq3))
+    println(seq4.contentEquals(seq3))
 }

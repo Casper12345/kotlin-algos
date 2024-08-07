@@ -1,5 +1,7 @@
 package quick_sort
 
+import kotlin.random.Random
+
 class QuickSort {
 
     fun partition(a: Array<Int>, lo: Int, hi: Int): Int {
@@ -46,7 +48,12 @@ class QuickSort {
 
 class OptimizedQuickSort {
 
-    fun sort(arr: Array<Int>, lo: Int = 0, hi: Int = arr.size -1) {
+    fun sort(arr: Array<Int>) {
+        arr.shuffle()
+        sort(arr, 0, arr.size -1)
+    }
+
+    fun sort(arr: Array<Int>, lo: Int, hi: Int) {
         if (lo < hi) {
             val (l, r) = threeWayPartition(arr, lo, hi)
 
@@ -90,13 +97,13 @@ class OptimizedQuickSort {
 }
 
 fun main() {
-    val q = QuickSort()
-    val a = arrayOf(2,1,3,8,9,0,2,3,9,6,7,10,1) // [0]
-    q.sort(a, 0, a.size -1)
-    a.forEach { i -> println(i) }
+//    val q = QuickSort()
+//    val a = arrayOf(2,1,3,8,9,0,2,3,9,6,7,10,1) // [0]
+//    q.sort(a, 0, a.size -1)
+//    a.forEach { i -> println(i) }
 
     val op = OptimizedQuickSort()
-    val ar = arrayOf(2,1,3,8,9,0,2,3,9,6,7,10,1) // [0]
-    op.sort(ar, 0, a.size -1)
+    val ar = arrayOf(1,2,3,8,6,5) // [0]
+    op.sort(ar, 0, ar.size -1)
     ar.forEach { i -> println(i) }
 }
